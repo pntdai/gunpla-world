@@ -1,0 +1,6 @@
+/* 
+ * This app does NOT import Tailwind base styles globally.
+ * CSS variables and base styles are provided by the shell app.
+ * For standalone dev mode, uncomment the line below:
+ */
+/* @import "tailwindcss"; */

@@ -1,0 +1,25 @@
+{
+  "name": "gunpla-world",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter \"./apps/*\" dev",
+    "dev:shell": "pnpm --filter shell dev",
+    "dev:scam-checker": "pnpm --filter scam-checker-module dev",
+    "build": "pnpm --filter @repo/ui build && pnpm --filter \"./apps/*\" build",
+    "build:ui": "pnpm --filter @repo/ui build",
+    "build:shell": "pnpm --filter shell build",
+    "build:scam-checker": "pnpm --filter scam-checker-module build",
+    "lint": "pnpm --filter \"./apps/*\" lint",
+    "clean": "pnpm --filter \"./apps/*\" exec rm -rf node_modules dist && pnpm --filter @repo/ui exec rm -rf node_modules dist",
+    "install:all": "pnpm install"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
