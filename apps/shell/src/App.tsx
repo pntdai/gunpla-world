@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { Button } from "@repo/ui";
+import { Suspense, lazy, useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import { Button } from "@repo/ui";
 
-function App() {
+const ScamCheckerApp = lazy(() => import("scamChecker/App"));
+
+function Home() {
   const [count, setCount] = useState(0);
 
   return (
@@ -43,11 +46,56 @@ function App() {
             Using Button component from <code>@repo/ui</code>
           </p>
         </div>
+        <div className="mb-4">
+          <Link to="/scam-checker">
+            <Button variant="outline">Go to Scam Checker Module</Button>
+          </Link>
+        </div>
         <p className="text-muted-foreground">
           Click on the Vite and React logos to learn more
         </p>
       </div>
     </div>
+  );
+}
+
+function ScamCheckerPage() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="container mx-auto p-8">
+        <div className="mb-6">
+          <Link to="/">
+            <Button variant="outline">← Back to Home</Button>
+          </Link>
+        </div>
+        <div className="mb-4 p-4 bg-card rounded-lg border">
+          <h2 className="text-2xl font-bold mb-2">Scam Checker Module</h2>
+          <p className="text-muted-foreground">
+            This page loads the remote module via Module Federation
+          </p>
+        </div>
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center p-8">
+              <div className="text-muted-foreground">
+                Loading remote module...
+              </div>
+            </div>
+          }
+        >
+          <ScamCheckerApp />
+        </Suspense>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/scam-checker" element={<ScamCheckerPage />} />
+    </Routes>
   );
 }
 
