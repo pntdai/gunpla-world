@@ -32,6 +32,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@repo/ui": path.resolve(__dirname, "../../packages/ui/src"),
+      "@repo/contracts": path.resolve(
+        __dirname,
+        "../../packages/contracts/src"
+      ),
       // Resolve @/* aliases inside @repo/ui package
       // "@": path.resolve(__dirname, "../../packages/ui/src"),
     },

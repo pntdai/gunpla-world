@@ -5,6 +5,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 const ScamCheckerApp = lazy(() => import("scamChecker/App"));
+const RemoteEventDemo = lazy(() => import("./pages/RemoteEventDemo"));
 
 function Home() {
   const [count, setCount] = useState(0);
@@ -51,6 +52,13 @@ function Home() {
             <Button variant="outline">Go to Scam Checker Module</Button>
           </Link>
         </div>
+        <div className="mb-4">
+          <Link to="/remote-events-demo">
+            <Button variant="outline">
+              Go to Remote Event Demo (CustomEvent via window)
+            </Button>
+          </Link>
+        </div>
         <p className="text-muted-foreground">
           Click on the Vite and React logos to learn more
         </p>
@@ -95,6 +103,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/scam-checker" element={<ScamCheckerPage />} />
+      <Route path="/remote-events-demo" element={<RemoteEventDemo />} />
     </Routes>
   );
 }
