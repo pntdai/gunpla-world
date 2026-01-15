@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import { Button } from "@repo/ui";
+import { StatusBadge } from "./components/StatusBadge";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -33,6 +34,25 @@ function App() {
         <p className="text-sm text-center text-muted-foreground">
           Using Button component from <code>@repo/ui</code> - styles provided by
           shell app
+        </p>
+      </div>
+
+      {/* Status Badge Demo - Using Semantic Color Tokens */}
+      <div className="p-6 bg-card rounded-lg border space-y-4">
+        <h2 className="text-xl font-semibold text-center">
+          Status Badges (Semantic Colors)
+        </h2>
+        <p className="text-sm text-center text-muted-foreground">
+          These badges use semantic color tokens that adapt to light/dark theme
+        </p>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <StatusBadge status="scam" label="Confirmed Scammer" />
+          <StatusBadge status="suspicious" label="Suspicious" />
+          <StatusBadge status="legit" label="Legit Seller" />
+          <StatusBadge status="info" label="Info" />
+        </div>
+        <p className="text-xs text-center text-muted-foreground">
+          Toggle dark mode in the shell to see colors adapt automatically
         </p>
       </div>
     </div>

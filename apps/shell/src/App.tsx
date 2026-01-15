@@ -2,6 +2,7 @@ import { Button } from "@repo/ui";
 import { Suspense, lazy, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import reactLogo from "./assets/react.svg";
+import { ThemeToggle } from "./components/ThemeToggle";
 import viteLogo from "/vite.svg";
 
 const ScamCheckerApp = lazy(() => import("scamChecker/App"));
@@ -12,6 +13,9 @@ function Home() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
+      <div className="fixed top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="max-w-4xl mx-auto p-8 text-center">
         <div className="flex justify-center gap-8 mb-8">
           <a href="https://vite.dev" target="_blank" className="block">
@@ -70,6 +74,9 @@ function Home() {
 function ScamCheckerPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <div className="fixed top-4 right-4">
+        <ThemeToggle />
+      </div>
       <div className="container mx-auto p-8">
         <div className="mb-6">
           <Link to="/">
