@@ -17,6 +17,7 @@ export default defineConfig({
       exposes: {
         "./App": "./src/App.tsx",
         "./RemoteWidget": "./src/RemoteWidget.tsx",
+        "./ScamCheckerPage": "./src/components/ScamCheckerPage.tsx",
       },
       shared: {
         react: {

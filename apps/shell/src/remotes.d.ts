@@ -10,3 +10,8 @@ declare module "scamChecker/RemoteWidget" {
   export default Component;
 }
 
+declare module "scamChecker/ScamCheckerPage" {
+  import { ComponentType } from "react";
+  const Component: ComponentType;
+  export default Component;
+}
