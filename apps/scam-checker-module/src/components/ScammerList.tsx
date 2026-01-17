@@ -38,53 +38,55 @@ export function ScammerList({
   }
 
   return (
-    <div className="space-y-3">
-      {scammers.map((scammer) => (
-        <Card
-          key={scammer.id}
-          className={`cursor-pointer transition-all hover:shadow-md ${
-            selectedId === scammer.id
-              ? "ring-2 ring-primary border-primary"
-              : ""
-          }`}
-          onClick={() => onSelect(scammer)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              onSelect(scammer);
-            }
-          }}
-        >
-          <CardContent className="p-4">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-semibold text-foreground truncate">
-                    {scammer.name}
-                  </h3>
-                  {scammer.alias && (
-                    <span className="text-sm text-muted-foreground">
-                      ({scammer.alias})
+    <>
+      <div className="flex flex-col gap-4 lg:hidden">
+        {scammers.map((scammer) => (
+          <Card
+            key={scammer.id}
+            className={`cursor-pointer transition-all hover:shadow-md ${
+              selectedId === scammer.id
+                ? "ring-2 ring-primary border-primary"
+                : ""
+            }`}
+            onClick={() => onSelect(scammer)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onSelect(scammer);
+              }
+            }}
+          >
+            <CardContent className="p-4">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="font-semibold text-foreground truncate">
+                      {scammer.name}
+                    </h3>
+                    {scammer.alias && (
+                      <span className="text-sm text-muted-foreground">
+                        ({scammer.alias})
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded bg-statusScam/10 text-statusScam border border-statusScam/20 text-xs font-medium">
+                      Scammer
                     </span>
-                  )}
+                    <span>•</span>
+                    <span>{scammer.platform}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {scammer.summary}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded bg-statusScam/10 text-statusScam border border-statusScam/20 text-xs font-medium">
-                    Scammer
-                  </span>
-                  <span>•</span>
-                  <span>{scammer.platform}</span>
-                </div>
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {scammer.summary}
-                </p>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </>
   );
 }

@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardContent,
-  Input,
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@repo/ui";
+import { Card, CardContent, Input } from "@repo/ui";
 import { useMemo, useState } from "react";
 import {
   mockScammers,
@@ -19,7 +11,7 @@ import { ScammerList } from "./ScammerList";
 function ScamCheckerPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedScammer, setSelectedScammer] = useState<Scammer | null>(null);
-  const [mobileDetailOpen, setMobileDetailOpen] = useState(false);
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const results = useMemo(() => {
@@ -32,7 +24,7 @@ function ScamCheckerPage() {
 
   const handleSelectScammer = (scammer: Scammer) => {
     setSelectedScammer(scammer);
-    setMobileDetailOpen(true);
+    setDetailModalOpen(true);
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -42,8 +34,6 @@ function ScamCheckerPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-
       {/* Search Bar */}
       <form onSubmit={handleSearch} className="space-y-4">
         <div className="relative">
@@ -71,51 +61,33 @@ function ScamCheckerPage() {
         </Card>
       )}
 
-      {/* Results - Responsive Layout */}
+      {/* Results */}
       {searchQuery.trim() && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* List - Always visible on mobile, left side on desktop */}
-          <div className="lg:col-span-1">
-            <div className="mb-4">
-              <p className="text-sm text-muted-foreground">
-                {loading
-                  ? "Searching..."
-                  : `${results.length} result${
-                      results.length !== 1 ? "s" : ""
-                    } found`}
-              </p>
-            </div>
-            <ScammerList
-              scammers={results}
-              selectedId={selectedScammer?.id || null}
-              onSelect={handleSelectScammer}
-              loading={loading}
-            />
+        <div>
+          <div className="mb-4">
+            <p className="text-sm text-muted-foreground">
+              {loading
+                ? "Searching..."
+                : `${results.length} result${
+                    results.length !== 1 ? "s" : ""
+                  } found`}
+            </p>
           </div>
-
-          {/* Detail Panel - Hidden on mobile (shown in sheet), visible on desktop */}
-          <div className="hidden lg:block lg:col-span-2">
-            <ScammerDetail scammer={selectedScammer} />
-          </div>
+          <ScammerList
+            scammers={results}
+            selectedId={selectedScammer?.id || null}
+            onSelect={handleSelectScammer}
+            loading={loading}
+          />
         </div>
       )}
 
-      {/* Mobile Detail Sheet */}
-      <Sheet
-        open={mobileDetailOpen}
-        onOpenChange={setMobileDetailOpen}
-        side="bottom"
-      >
-        <SheetHeader>
-          <SheetTitle>Scammer Details</SheetTitle>
-        </SheetHeader>
-        <SheetContent>
-          <ScammerDetail
-            scammer={selectedScammer}
-            onClose={() => setMobileDetailOpen(false)}
-          />
-        </SheetContent>
-      </Sheet>
+      {/* Detail Modal */}
+      <ScammerDetail
+        scammer={selectedScammer}
+        open={detailModalOpen}
+        onOpenChange={setDetailModalOpen}
+      />
     </div>
   );
 }

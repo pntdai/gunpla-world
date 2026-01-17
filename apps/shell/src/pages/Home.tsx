@@ -52,23 +52,6 @@ export function Home() {
           </Card>
         ))}
       </div>
-
-      {/* Info Section */}
-      <Card className="mt-12">
-        <CardHeader>
-          <CardTitle>About This Platform</CardTitle>
-          <CardDescription>
-            Built with Module Federation 2.0 for scalable micro-frontend
-            architecture
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>
-            Each module is independently developed and deployed, yet seamlessly
-            integrated into a unified user experience.
-          </p>
-        </CardContent>
-      </Card>
     </div>
   );
 }

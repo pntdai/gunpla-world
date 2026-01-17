@@ -41,6 +41,22 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        statusScam: {
+          DEFAULT: "hsl(var(--status-scam))",
+          foreground: "hsl(var(--status-scam-foreground))",
+        },
+        statusSuspicious: {
+          DEFAULT: "hsl(var(--status-suspicious))",
+          foreground: "hsl(var(--status-suspicious-foreground))",
+        },
+        statusLegit: {
+          DEFAULT: "hsl(var(--status-legit))",
+          foreground: "hsl(var(--status-legit-foreground))",
+        },
+        statusInfo: {
+          DEFAULT: "hsl(var(--status-info))",
+          foreground: "hsl(var(--status-info-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
